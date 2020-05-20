@@ -82,9 +82,10 @@ if __name__ == "__main__":
     fx_hits = create_samples("Samples/Sounds/FX",create_fx)
     
     build_ups = create_samples("Samples/Sounds/Build_Ups",create_drum)
+    intro = create_samples("Samples/Sounds/Intro",create_fx)
     
 
-    controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background)
+    controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background,intro)
 
     dj = DJ_AI(controller)
 

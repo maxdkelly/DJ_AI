@@ -21,6 +21,7 @@ class Routine():
         self.snare_loop_index = self.find_index(None, self.controller.snare_loops)
         self.fx_hit_index = self.find_index(None, self.controller.fx_hits)
         self.background_loop_index = self.find_index(None, self.controller.background_loops)
+        self.intro_index = self.find_index(None, self.controller.intro)
         #self.perc_loop_index = self.find_index(None, self.controller.perc_loops)
 
     def find_index(self, key, music_list):

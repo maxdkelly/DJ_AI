@@ -20,9 +20,16 @@ class DJ_AI():
 
     def play(self):
 
+        self.play_intro()
+
         for sequence in self.set_list:
 
             sequence[0](sequence[1])
+
+    def play_intro(self):
+
+        self.controller.play_intro(0,True)
+
 
     def routine_A(self, routine):
  
@@ -113,7 +120,7 @@ class DJ_AI():
 
         self.controller.start_bass_hit(routine.bass_hit_index,False)
         self.controller.start_drums_full(routine.drum_full_index,False)
-        time.sleep(12)
+        time.sleep(22)
         self.controller.start_synth_loop(routine.synth_index,True)
         time.sleep(12)
         self.controller.stop_drums_full(False)

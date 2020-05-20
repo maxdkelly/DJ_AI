@@ -13,7 +13,7 @@ import time
 
 class Sample_Controller():
 
-    def __init__(self, d_f, d_t, s_l, b_l, p_l, b_h, s_h, f_h, b_u, snare, back):
+    def __init__(self, d_f, d_t, s_l, b_l, p_l, b_h, s_h, f_h, b_u, snare, back, i):
         self.drums_full = d_f
         self.drums_tops = d_t
         self.synth_loops = s_l
@@ -25,6 +25,7 @@ class Sample_Controller():
         self.build_ups = b_u
         self.snare_loops = snare
         self.background_loops = back
+        self.intro = i
 
         self.curr_drums_full_obj = None
         self.curr_drums_tops_obj = None  
@@ -47,7 +48,14 @@ class Sample_Controller():
             self.curr_synth_obj.wait_loop()
         elif self.curr_bass_obj != None:
             self.curr_bass_obj.wait_loop()
-       
+
+
+    def play_intro(self,pos,now):
+        self.wait_beat(now)
+        print("Playing: " + self.intro[pos].path)
+        pygame.mixer.Channel(4).play(pygame.mixer.Sound(self.intro[pos].path))
+        time.sleep(self.intro[pos].length)
+
     def play_hit(self,sample,now):
 
         self.wait_beat(now)  
