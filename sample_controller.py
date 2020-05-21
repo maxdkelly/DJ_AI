@@ -40,14 +40,15 @@ class Sample_Controller():
         if now:
             return
 
-        if self.curr_drums_full_obj != None:
-            self.curr_drums_full_obj.wait_loop()
-        elif self.curr_drums_tops_obj != None:
-            self.curr_drums_tops_obj.wait_loop()
-        elif self.curr_synth_obj != None:
+        if self.curr_synth_obj != None:
             self.curr_synth_obj.wait_loop()
         elif self.curr_bass_obj != None:
             self.curr_bass_obj.wait_loop()
+        elif self.curr_drums_full_obj != None:
+            self.curr_drums_full_obj.wait_loop()
+        elif self.curr_drums_tops_obj != None:
+            self.curr_drums_tops_obj.wait_loop()
+        
 
 
     def play_intro(self,pos,now):

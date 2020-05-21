@@ -89,16 +89,17 @@ if __name__ == "__main__":
 
     dj = DJ_AI(controller)
 
-    dj.create_set(4)
+    dj.create_set(11)
     dj.play()
 
    # routine_one = Routine(127,controller)
-    #routine_two = Routine(120,controller)
-    #routine_three = Routine(125,controller)
+  #  routine_two = Routine(125,controller)
+  #  routine_three = Routine(130,controller)
 
-    #dj.routine_A(routine_three)
-    #dj.routine_C(routine_two)
-    #dj.routine_D(routine_one)
+    #
+  #  dj.routine_E(routine_two)
+  #  dj.routine_D(routine_one)
+  #  dj.routine_A(routine_three)
     
     
     
