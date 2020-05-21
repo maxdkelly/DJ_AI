@@ -64,9 +64,11 @@ class Sample_Controller():
         pygame.mixer.Channel(4).play(pygame.mixer.Sound(sample.path))
 
 
-    def play_loop(self,channel,sample): 
+    def play_loop(self,channel,sample, fade_length): 
         print("Playing: " + sample.path)
-        pygame.mixer.Channel(channel).play(pygame.mixer.Sound(sample.path), loops = -1)
+
+        fade = int(fade_length * sample.length * 1000)
+        pygame.mixer.Channel(channel).play(pygame.mixer.Sound(sample.path), loops = -1, fade_ms = fade)
         sample.start_loop()
 
     def build_up_transition(self,build_up_pos,now):
@@ -82,16 +84,16 @@ class Sample_Controller():
         #self.stop_synth_loop()
 
 
-    def start_drums_full(self,pos,now):
+    def start_drums_full(self,pos,now,fade):
 
         self.wait_beat(now)
-        self.play_loop(0,self.drums_full[pos])
+        self.play_loop(0,self.drums_full[pos],fade)
         self.curr_drums_full_obj = self.drums_full[pos]
 
-    def start_drums_tops(self,pos,now):
+    def start_drums_tops(self, pos, now, fade):
   
         self.wait_beat(now)
-        self.play_loop(6,self.drums_tops[pos])
+        self.play_loop(6,self.drums_tops[pos],fade)
         self.curr_drums_tops_obj = self.drums_tops[pos]
 
     def stop_drums_full(self,now):
@@ -109,10 +111,10 @@ class Sample_Controller():
 
         self.curr_drums_tops_obj = None
        
-    def start_bass_loop(self,pos,now):
+    def start_bass_loop(self,pos,now, fade):
 
         self.wait_beat(now)
-        self.play_loop(1,self.bass_loops[pos])
+        self.play_loop(1,self.bass_loops[pos], fade)
         self.curr_bass_obj = self.bass_loops[pos]
 
     def stop_bass_loop(self,now):
@@ -122,11 +124,11 @@ class Sample_Controller():
         pygame.mixer.Channel(1).stop()
         self.curr_bass_obj = None
 
-    def start_synth_loop(self,pos,now):
+    def start_synth_loop(self,pos,now, fade):
 
         self.wait_beat(now)
  
-        self.play_loop(2,self.synth_loops[pos])
+        self.play_loop(2,self.synth_loops[pos],fade)
         self.curr_synth_obj = self.synth_loops[pos]
         
     def stop_synth_loop(self,now):
@@ -136,10 +138,10 @@ class Sample_Controller():
         pygame.mixer.Channel(2).stop()
         self.curr_synth_obj = None
 
-    def start_perc_loop(self,pos,now):
+    def start_perc_loop(self,pos,now, fade):
   
         self.wait_beat(now)
-        self.play_loop(3,self.perc_loops[pos])
+        self.play_loop(3,self.perc_loops[pos], fade)
         
     def stop_perc_loop(self,now):
         self.wait_beat(now)
@@ -155,18 +157,18 @@ class Sample_Controller():
     def start_fx_hit(self,pos,now):
         self.play_hit(self.fx_hits[pos],now)
 
-    def start_background_loop(self,pos,now):
+    def start_background_loop(self,pos,now, fade):
         self.wait_beat(now)
-        self.play_loop(7,self.background_loops[pos])
+        self.play_loop(7,self.background_loops[pos], fade)
 
     def stop_background_loop(self,now):
         self.wait_beat(now)
         print("Stopping: Background Track")
         pygame.mixer.Channel(7).stop()
 
-    def start_snare_loop(self,pos,now):
+    def start_snare_loop(self,pos,now, fade):
         self.wait_beat(now)
-        self.play_loop(5,self.snare_loops[pos])
+        self.play_loop(5,self.snare_loops[pos], fade)
 
     def stop_snare_loop(self,now):
         self.wait_beat(now)
