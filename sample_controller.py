@@ -67,6 +67,9 @@ class Sample_Controller():
 
     def play_loop(self,channel,sample, fade_length): 
 
+        if sample.length >= 29:
+            fade_length = fade_length/4
+
         if fade_length == 0:
             print("Playing: " + sample.path)
         else:
@@ -81,6 +84,11 @@ class Sample_Controller():
 
         if sample == None:
             return
+
+        if sample.length >= 29:
+            fade_length = fade_length/4
+
+        
 
         if fade_length == 0:
             print("Stopping: " + sample.path)

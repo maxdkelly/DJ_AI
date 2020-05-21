@@ -86,7 +86,7 @@ if __name__ == "__main__":
     
 
     controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background,intro)
-
+   
     dj = DJ_AI(controller)
 
     dj.create_set(11)
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     #routine_one = Routine(127,controller)
     #routine_two = Routine(125,controller)
 
-    #dj.routine_D(routine_one)
+    #dj.routine_A(routine_one)
 
     
   #  routine_three = Routine(130,controller)
