@@ -7,6 +7,7 @@ class Routine():
 
         self.bpm = bpm
         self.controller = controller
+        self.trans_option = random.choice(['Full', 'Tops', 'Tops'])
 
         self.drum_full_index = self.find_index(None, self.controller.drums_full)
         self.drum_full_index_2 = self.find_index(None, self.controller.drums_full)
@@ -22,7 +23,47 @@ class Routine():
         self.fx_hit_index = self.find_index(None, self.controller.fx_hits)
         self.background_loop_index = self.find_index(None, self.controller.background_loops)
         self.intro_index = self.find_index(None, self.controller.intro)
-        #self.perc_loop_index = self.find_index(None, self.controller.perc_loops)
+        self.vocal_loop_index = self.find_index(None, self.controller.vocal_loops)
+        self.top_trans_index = self.find_trans(self.controller.top_trans)
+        self.full_trans_index = self.find_trans(self.controller.full_trans)
+
+        self.end_bpm_top = self.controller.top_trans[self.top_trans_index].end_bpm
+        self.end_bpm_full = self.controller.full_trans[self.full_trans_index].end_bpm
+
+        self.synth_pair_index = None
+        self.bass_pair_index = None
+
+        self.find_synth_bass(self.controller.synth_loops,self.controller.bass_loops)
+
+
+    def find_trans(self, music_list):
+
+        selected_list = []
+
+        for obj in music_list:
+            
+            if obj.start_bpm == self.bpm:
+                selected_list.append(obj)
+        
+        choice = random.choice(selected_list)
+
+        return music_list.index(choice)
+
+    def find_synth_bass(self, music_list_1, music_list_2):
+
+        selected_list = []
+
+        for obj in music_list_1:
+            if obj.bpm == self.bpm:
+                for obj_2 in music_list_2:
+                    if obj_2.bpm == self.bpm and obj_2.key == obj.key:
+                        selected_list.append((obj,obj_2))
+
+        choice = random.choice(selected_list)
+
+        self.synth_pair_index = music_list_1.index(choice[0])
+        self.bass_pair_index = music_list_2.index(choice[1])
+        
 
     def find_index(self, key, music_list):
                 
@@ -40,8 +81,7 @@ class Routine():
 
         #deal with not repeating samples later        
 
-        index = music_list.index(random.choice(selected_list))
+        return music_list.index(random.choice(selected_list))
 
-        #indexes.append(index)
-        return index
+        
     

@@ -9,6 +9,8 @@ from synth import Synth
 from bass import Bass
 from percussion import Percussion
 from fx import FX
+from vocal import Vocal
+from transition import Transition
 from sample_controller import Sample_Controller
 from routine import Routine
 from dj_ai import DJ_AI
@@ -66,9 +68,28 @@ def create_fx(file,my_path):
 
     return FX(bpm, wav)
 
+def create_vocal(file,my_path):
+    split_str = file.split('_')
+    print(split_str)
+    bpm = int(split_str[1])
+    key = split_str[2]
+    wav = my_path + "/" + file
+
+    return Vocal(bpm, key, wav)
+
+def create_transition(file,my_path):
+    split_str = file.split('_')
+    print(split_str)
+    start_bpm = int(split_str[1])
+    end_bpm = int(split_str[2])
+    wav = my_path + "/" + file
+
+    return Transition(start_bpm, end_bpm, wav)
+
 
 if __name__ == "__main__":
    
+    pygame.mixer.init()
     drums_full = create_samples("Samples/Loops/Drums/Full",create_drum)
     drums_tops = create_samples("Samples/Loops/Drums/Tops",create_drum)
     synth_loops = create_samples("Samples/Loops/Synths",create_synth)
@@ -76,6 +97,7 @@ if __name__ == "__main__":
     perc_loops = create_samples("Samples/Loops/Percussion",create_perc)
     snare_loops = create_samples("Samples/Loops/Snares",create_drum)
     background = create_samples("Samples/Loops/Background",create_fx)
+    vocals = create_samples("Samples/Loops/Vocals",create_vocal)
 
     bass_hits = create_samples("Samples/Sounds/Bass",create_bass)
     synth_hits = create_samples("Samples/Sounds/Synths",create_synth)
@@ -83,27 +105,17 @@ if __name__ == "__main__":
     
     build_ups = create_samples("Samples/Sounds/Build_Ups",create_drum)
     intro = create_samples("Samples/Sounds/Intro",create_fx)
-    
+    top_trans = create_samples("Samples/Sounds/Transitions/Tops",create_transition)
+    full_trans = create_samples("Samples/Sounds/Transitions/Full",create_transition)
 
-    controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background,intro)
+    controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background,intro,vocals,top_trans,full_trans)
    
     dj = DJ_AI(controller)
 
-    dj.create_set(11)
+    dj.generate_routines(6)
     dj.play()
 
-    #routine_one = Routine(127,controller)
-    #routine_two = Routine(125,controller)
 
-    #dj.routine_A(routine_one)
-
-    
-  #  routine_three = Routine(130,controller)
-
-    #
-   # dj.routine_E(routine_two)
-  #  dj.routine_D(routine_one)
-  #  dj.routine_A(routine_three)
     
     
     
