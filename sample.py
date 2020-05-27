@@ -1,13 +1,13 @@
-import winsound
 import pygame
-import librosa
 import time
-import threading
+
 
 class Sample:
     def __init__(self, path):
         self.path = path
-        self.length = librosa.get_duration(filename=path)
+        
+        a = pygame.mixer.Sound(path)
+        self.length = a.get_length()
 
         self.start_time = None
         
