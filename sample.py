@@ -4,11 +4,9 @@ import time
 
 class Sample:
     def __init__(self, path):
-        self.path = path
         
-        a = pygame.mixer.Sound(path)
-        self.length = a.get_length()
-
+        self.path = path    
+        self.length =  pygame.mixer.Sound(path).get_length()
         self.start_time = None
         
 
