@@ -28,7 +28,7 @@ def create_samples(my_path,func):
 
 def create_drum(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+   # print(split_str)
     bpm = int(split_str[1])
     wav = my_path + "/" + file
 
@@ -36,7 +36,7 @@ def create_drum(file,my_path):
 
 def create_synth(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+ #   print(split_str)
     bpm = int(split_str[1])
     key = split_str[2]
     wav = my_path + "/" + file
@@ -45,7 +45,7 @@ def create_synth(file,my_path):
 
 def create_bass(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+  #  print(split_str)
     bpm = int(split_str[1])
     key = split_str[2]
     wav = my_path + "/" + file
@@ -54,7 +54,7 @@ def create_bass(file,my_path):
 
 def create_perc(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+  #  print(split_str)
     bpm = int(split_str[1])
     wav = my_path + "/" + file
 
@@ -62,7 +62,7 @@ def create_perc(file,my_path):
 
 def create_fx(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+ #   print(split_str)
     bpm = int(split_str[1])
     wav = my_path + "/" + file
 
@@ -70,7 +70,7 @@ def create_fx(file,my_path):
 
 def create_vocal(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+  #  print(split_str)
     bpm = int(split_str[1])
     key = split_str[2]
     wav = my_path + "/" + file
@@ -79,7 +79,7 @@ def create_vocal(file,my_path):
 
 def create_transition(file,my_path):
     split_str = file.split('_')
-    print(split_str)
+  #  print(split_str)
     start_bpm = int(split_str[1])
     end_bpm = int(split_str[2])
     wav = my_path + "/" + file
@@ -90,6 +90,7 @@ def create_transition(file,my_path):
 if __name__ == "__main__":
    
     pygame.mixer.init()
+    pygame.mixer.set_num_channels(10)
     drums_full = create_samples("Samples/Loops/Drums/Full",create_drum)
     drums_tops = create_samples("Samples/Loops/Drums/Tops",create_drum)
     synth_loops = create_samples("Samples/Loops/Synths",create_synth)
@@ -111,7 +112,6 @@ if __name__ == "__main__":
     controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background,intro,vocals,top_trans,full_trans)
    
     dj = DJ_AI(controller)
-
     dj.generate_routines(6)
     dj.play()
 

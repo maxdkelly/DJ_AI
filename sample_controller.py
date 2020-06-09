@@ -29,19 +29,16 @@ class Sample_Controller():
         self.top_trans = t_t
         self.full_trans = f_t
 
-
-
         self.curr_drums_full_obj = None
         self.curr_drums_tops_obj = None  
         self.curr_synth_obj = None
         self.curr_bass_obj = None
         self.curr_snare_obj = None
         self.curr_vocal_obj = None
-        self.curr_background_obj = None
+        self.curr_synth_2_obj = None
+        self.curr_bass_2_obj = None
         self.curr_trans_obj = None
-
-        pygame.mixer.init()
-
+        self.curr_perc_obj = None
 
     def wait_beat(self,now):
 
@@ -52,12 +49,19 @@ class Sample_Controller():
             self.curr_synth_obj.wait_loop()
         elif self.curr_bass_obj != None:
             self.curr_bass_obj.wait_loop()
+        if self.curr_synth_2_obj != None:
+            self.curr_synth_2_obj.wait_loop()
+        if self.curr_bass_2_obj != None:
+            self.curr_bass_2_obj.wait_loop()
         elif self.curr_drums_full_obj != None:
             self.curr_drums_full_obj.wait_loop()
         elif self.curr_drums_tops_obj != None:
             self.curr_drums_tops_obj.wait_loop()
         elif self.curr_vocal_obj != None:
             self.curr_vocal_obj.wait_loop()
+        elif self.curr_perc_obj != None:
+            self.curr_perc_obj.wait_loop()
+
         
 
 
@@ -124,6 +128,10 @@ class Sample_Controller():
             self.stop_synth_loop(False,1)
         if self.curr_snare_obj != None and self.curr_snare_obj != elem:
             self.stop_snare_loop(False,1)
+        if self.curr_synth_2_obj != None and self.curr_synth_2_obj != elem:
+            self.stop_synth_2_loop(False,1)
+        if self.curr_bass_2_obj != None and self.curr_bass_2_obj != elem:
+            self.stop_bass_2_loop(False,1)
         if self.curr_vocal_obj != None and self.curr_vocal_obj != elem:
             self.stop_vocal_loop(False,1)
 
@@ -196,7 +204,6 @@ class Sample_Controller():
     def start_synth_loop(self,pos,now, fade):
 
         self.wait_beat(now)
- 
         self.play_loop(2,self.synth_loops[pos],fade)
         self.curr_synth_obj = self.synth_loops[pos]
         
@@ -205,6 +212,18 @@ class Sample_Controller():
         self.wait_beat(now)
         self.stop_loop(2,self.curr_synth_obj,fade)
         self.curr_synth_obj = None
+
+    def start_perc_loop(self,pos,now, fade):
+       
+        self.wait_beat(now)
+        self.play_loop(8,self.perc_loops[pos],fade)
+        self.curr_perc_obj = self.perc_loops[pos]
+        
+    def stop_perc_loop(self,now,fade):
+
+        self.wait_beat(now)
+        self.stop_loop(8,self.curr_perc_obj,fade)
+        self.curr_perc_obj = None
 
     def start_bass_hit(self,pos,now):
         self.play_hit(self.bass_hits[pos],now,0)
@@ -228,15 +247,25 @@ class Sample_Controller():
         self.stop_loop(4,self.curr_trans_obj,fade)
         self.curr_synth_obj = None
 
-    def start_background_loop(self,pos,now, fade):
+    def start_synth_2_loop(self,pos,now, fade):
         self.wait_beat(now)
-        self.play_loop(7,self.background_loops[pos], fade)
-        self.curr_background_obj = self.background_loops[pos] 
+        self.play_loop(7,self.synth_loops[pos], fade)
+        self.curr_synth_2_obj = self.synth_loops[pos] 
 
-    def stop_background_loop(self,now,fade):
+    def stop_synth_2_loop(self,now,fade):
         self.wait_beat(now)
-        self.stop_loop(7,self.curr_background_obj,fade)
-        self.curr_background_obj = None
+        self.stop_loop(7,self.curr_synth_2_obj,fade)
+        self.curr_synth_2_obj = None
+
+    def start_bass_2_loop(self,pos,now, fade):
+        self.wait_beat(now)
+        self.play_loop(7,self.bass_loops[pos], fade)
+        self.curr_bass_2_obj = self.bass_loops[pos] 
+
+    def stop_bass_2_loop(self,now,fade):
+        self.wait_beat(now)
+        self.stop_loop(7,self.curr_bass_2_obj,fade)
+        self.curr_bass_2_obj = None
 
     def start_snare_loop(self,pos,now, fade):
         self.wait_beat(now)
@@ -247,6 +276,8 @@ class Sample_Controller():
         self.wait_beat(now)
         self.stop_loop(5,self.curr_snare_obj,fade)
         self.curr_snare_obj = None
+
+    
 
 
     
