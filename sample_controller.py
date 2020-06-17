@@ -86,6 +86,8 @@ class Sample_Controller():
 
         if sample.length >= 29:
             fade_length = fade_length/4
+        elif sample.length >= 14:
+            fade_length = fade_length/2
 
         if fade_length == 0:
             print("Playing: " + sample.path)
