@@ -96,7 +96,7 @@ class DJ_AI():
 
     def play(self):
 
-       # self.play_intro()
+        self.play_intro()
 
         rout_i = 0
         for routine in self.set_list:
@@ -215,7 +215,7 @@ class DJ_AI():
 
     def bass_synth_routine(self, routine):
         if self.controller.curr_drums_full_obj == None:
-            self.controller.start_drums_tops(routine.drum_full_index_2,False,1)
+            self.controller.start_drums_full(routine.drum_full_index_2,False,1)
             time.sleep(6)
         self.controller.isolate_element(self.controller.curr_drums_full_obj)
         time.sleep(12)
