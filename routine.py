@@ -10,23 +10,23 @@ class Routine():
         self.controller = controller
         self.trans_option = random.choice(['Full', 'Tops', 'Tops'])
 
-        self.drum_full_index = self.find_index(None, self.controller.drums_full)
-        self.drum_full_index_2 = self.find_index(None, self.controller.drums_full)
-        self.drum_tops_index = self.find_index(None, self.controller.drums_tops)
-        self.drum_tops_index_2 = self.find_index(None, self.controller.drums_tops)
-        self.synth_index = self.find_index(None, self.controller.synth_loops)
-        self.synth_index_2 = self.find_index(None, self.controller.synth_loops) 
-        self.bass_loop_index = self.find_index(None, self.controller.bass_loops)
-        self.bass_loop_index_2 = self.find_index(None, self.controller.bass_loops)
-        self.build_up_index = self.find_index(None, self.controller.build_ups)
-        self.bass_hit_index = self.find_index(None, self.controller.bass_hits)
-        self.snare_loop_index = self.find_index(None, self.controller.snare_loops)
-        self.fx_hit_index = self.find_index(None, self.controller.fx_hits)
-        self.fx_hit_index_2 = self.find_index(None, self.controller.fx_hits)
-        self.background_loop_index = self.find_index(None, self.controller.background_loops)
-        self.intro_index = self.find_index(None, self.controller.intro)
-        self.vocal_loop_index = self.find_index(None, self.controller.vocal_loops)
-        self.perc_loop_index = self.find_index(None, self.controller.perc_loops)
+        self.drum_full_index = self.find_index(self.controller.drums_full)
+        self.drum_full_index_2 = self.find_index(self.controller.drums_full)
+        self.drum_tops_index = self.find_index(self.controller.drums_tops)
+        self.drum_tops_index_2 = self.find_index(self.controller.drums_tops)
+        self.synth_index = self.find_index(self.controller.synth_loops)
+        self.synth_index_2 = self.find_index(self.controller.synth_loops) 
+        self.bass_loop_index = self.find_index(self.controller.bass_loops)
+        self.bass_loop_index_2 = self.find_index(self.controller.bass_loops)
+        self.build_up_index = self.find_index(self.controller.build_ups)
+        self.bass_hit_index = self.find_index(self.controller.bass_hits)
+        self.snare_loop_index = self.find_index(self.controller.snare_loops)
+        self.fx_hit_index = self.find_index(self.controller.fx_hits)
+        self.fx_hit_index_2 = self.find_index(self.controller.fx_hits)
+        self.background_loop_index = self.find_index(self.controller.background_loops)
+        self.intro_index = self.find_index(self.controller.intro)
+        self.vocal_loop_index = self.find_index(self.controller.vocal_loops)
+        self.perc_loop_index = self.find_index(self.controller.perc_loops)
 
         self.top_trans_index = self.find_trans(self.controller.top_trans)
         self.full_trans_index = self.find_trans(self.controller.full_trans)
@@ -39,30 +39,24 @@ class Routine():
 
         cam_wheel = Camelot()
 
-        self.bass_to_synth_index = self.find_index(None, self.controller.bass_loops) 
+        self.bass_to_synth_index = self.find_index(self.controller.bass_loops) 
         self.synth_index_end = cam_wheel.find_samples(self.controller.bass_loops[self.bass_to_synth_index],self.controller.synth_loops)
         while self.synth_index_end == -1:
-            self.bass_to_synth_index = self.find_index(None, self.controller.bass_loops) 
+            self.bass_to_synth_index = self.find_index(self.controller.bass_loops) 
             self.synth_index_end = cam_wheel.find_samples(self.controller.bass_loops[self.bass_to_synth_index],self.controller.synth_loops)
 
-        self.bass_index_start = self.find_index(None, self.controller.bass_loops) 
+        self.bass_index_start = self.find_index(self.controller.bass_loops) 
         self.bass_index_end = cam_wheel.find_samples(self.controller.bass_loops[self.bass_index_start],self.controller.bass_loops)
         while self.bass_index_end == -1:
-            self.bass_index_start = self.find_index(None, self.controller.bass_loops) 
+            self.bass_index_start = self.find_index(self.controller.bass_loops) 
             self.bass_index_end = cam_wheel.find_samples(self.controller.bass_loops[self.bass_index_start],self.controller.bass_loops)
 
-        self.synth_1 = self.find_index(None, self.controller.synth_loops) 
+        self.synth_1 = self.find_index(self.controller.synth_loops) 
         self.synth_2 = cam_wheel.find_samples(self.controller.synth_loops[self.synth_1],self.controller.synth_loops)
         while self.synth_2 == -1:
-            self.synth_1 = self.find_index(None, self.controller.synth_loops) 
+            self.synth_1 = self.find_index(self.controller.synth_loops) 
             self.synth_2 = cam_wheel.find_samples(self.controller.synth_loops[self.synth_1],self.controller.synth_loops)
      
-       
-
-
-
-       
-
         self.find_synth_bass(self.controller.synth_loops,self.controller.bass_loops)
 
 
@@ -94,7 +88,7 @@ class Routine():
         self.synth_pair_index = music_list_1.index(choice[0])
         self.bass_pair_index = music_list_2.index(choice[1])
         
-    def find_index(self, key, music_list):
+    def find_index(self, music_list):
                 
         selected_list = []
 
@@ -102,11 +96,8 @@ class Routine():
             
             if obj.bpm == 0:
                 selected_list.append(obj)
-            elif obj.bpm == self.bpm and key == None:
+            elif obj.bpm == self.bpm:
                 selected_list.append(obj)
-            elif key != None:
-                if obj.key == key and obj.bpm == self.bpm:
-                    selected_list.append(obj)
 
         if not selected_list:
             return -1        
