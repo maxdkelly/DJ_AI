@@ -1,6 +1,16 @@
 # DJ_AI
-Techno playing DJ 
 
-how to run -> python main.py
+DJ_AI is a script that automatedly plays techno music.
 
-requires pygame to run
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the requirements for DJ_AI.
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+```bash
+python main.py
