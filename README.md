@@ -14,3 +14,8 @@ pip install -r requirements.txt
 
 ```bash
 python main.py
+```
+
+## Link to Set
+
+[Click Here](https://www.youtube.com/watch?v=-rK6V6OrSzk)
