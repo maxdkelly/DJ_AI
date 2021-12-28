@@ -4,21 +4,21 @@ DJ_AI is a python script that automatedly plays techno music.
 
 ## Requirements
 
-DJ_AI requires Python >=3.6 and package maanger pip be installed and usable from the command line
+DJ_AI requires Python >=3.6 and package manager pip be installed and usable from the command line.
 
-Python can be installed from [here](https://www.python.org/downloads/)
+Python can be installed from [here](https://www.python.org/downloads/).
 
-Pip can be installed from [here](https://pip.pypa.io/en/stable/)
+pip can be installed from [here](https://pip.pypa.io/en/stable/).
+
 ## Installation
 
 ### Optional
 
-Create a python virtual enviroment by following instructions located [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/).
+Create and activate a python virtual enviroment by following the instructions located [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/).
 
 ### Required
 
-Use pip to install the requirements for DJ_AI by typing the following into the command line 
-
+Use pip to install the requirements for DJ_AI by typing the following into the command line. 
 
 ```bash
 pip install -r requirements.txt
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-To run the script, type the following command within the root level directory 
+To run the script, type the following command within the root level directory. 
 
 ```bash
 python main.py
