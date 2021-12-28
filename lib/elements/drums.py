@@ -1,6 +1,6 @@
-from sample import Sample
+from lib.elements.sample import Sample
 
-class Percussion(Sample):
+class Drums(Sample):
     def __init__(self, bpm, wav):
         super().__init__(wav)
         self.bpm = bpm

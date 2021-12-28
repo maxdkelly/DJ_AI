@@ -1,4 +1,4 @@
-from sample import Sample
+from lib.elements.sample import Sample
 
 class Transition(Sample):
     def __init__(self, start_bpm, end_bpm, wav):

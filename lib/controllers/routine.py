@@ -1,6 +1,6 @@
 import random
 import time
-from camelot import Camelot
+from lib.controllers.camelot import Camelot
 
 class Routine():
 

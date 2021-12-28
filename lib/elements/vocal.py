@@ -1,4 +1,4 @@
-from sample import Sample
+from lib.elements.sample import Sample
 
 class Vocal(Sample):
     def __init__(self, bpm, key, wav):

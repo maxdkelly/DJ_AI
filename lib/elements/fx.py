@@ -1,4 +1,4 @@
-from sample import Sample
+from lib.elements.sample import Sample
 
 class FX(Sample):
     def __init__(self, bpm, wav):

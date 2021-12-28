@@ -3,17 +3,17 @@ from os.path import isfile, join
 import time
 import pygame
 
-from sample import Sample
-from drums import Drums
-from synth import Synth
-from bass import Bass
-from percussion import Percussion
-from fx import FX
-from vocal import Vocal
-from transition import Transition
-from sample_controller import Sample_Controller
-from routine import Routine
-from dj_ai import DJ_AI
+# from lib.elements.sample import Sample
+from lib.elements.drums import Drums
+from lib.elements.synth import Synth
+from lib.elements.bass import Bass
+from lib.elements.percussion import Percussion
+from lib.elements.fx import FX
+from lib.elements.vocal import Vocal
+from lib.elements.transition import Transition
+from lib.controllers.sample_controller import Sample_Controller
+from lib.controllers.routine import Routine
+from lib.dj_ai import DJ_AI
 
 def create_samples(my_path,func):
 
@@ -109,7 +109,22 @@ if __name__ == "__main__":
     top_trans = create_samples("Samples/Sounds/Transitions/Tops",create_transition)
     full_trans = create_samples("Samples/Sounds/Transitions/Full",create_transition)
 
-    controller = Sample_Controller(drums_full,drums_tops,synth_loops,bass_loops,perc_loops,bass_hits, synth_hits,fx_hits,build_ups,snare_loops,background,intro,vocals,top_trans,full_trans)
+    controller = Sample_Controller(drums_full,
+        drums_tops,
+        synth_loops,
+        bass_loops,
+        perc_loops,
+        bass_hits, 
+        synth_hits,
+        fx_hits,
+        build_ups,
+        snare_loops,
+        background,
+        intro,
+        vocals,
+        top_trans,
+        full_trans
+    )
    
     dj = DJ_AI(controller)
     dj.generate_routines(6)

@@ -1,6 +1,6 @@
 import random
 import time
-from routine import Routine
+from lib.controllers.routine import Routine
 
 class DJ_AI():
     def __init__(self, sample_controller):

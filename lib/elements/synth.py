@@ -1,8 +1,8 @@
-from sample import Sample
+from lib.elements.sample import Sample
 
-class Bass(Sample):
+class Synth(Sample):
     def __init__(self, bpm, key, wav):
         super().__init__(wav)
-        self.key = key
         self.bpm = bpm
+        self.key = key
         self.wav = wav
