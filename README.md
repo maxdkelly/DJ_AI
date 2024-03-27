@@ -1,3 +1,5 @@
+(made before full-time employment)
+
 # DJ_AI
 
 DJ_AI is a python script that automatedly plays techno music.
